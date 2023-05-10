@@ -1,0 +1,56 @@
+{% extends 'account/base_dashboard.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<div id="page-wrapper" xmlns="http://www.w3.org/1999/html">
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Profile Update</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">First Name</label>
+                        <input type="text" value="{{profile.user.first_name}}" name="first_name" class="form-control"
+                               id="exampleFormControlInput1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput2" class="form-label">Last Name</label>
+                        <input type="text" value="{{profile.user.last_name}}" name="last_name" class="form-control"
+                               id="exampleFormControlInput2">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput3" class="form-label">Email address</label>
+                        <input type="email" value="{{profile.user.email}}" name="email" class="form-control"
+                               id="exampleFormControlInput3">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput4" class="form-label">Image</label>
+                        <input type="file" value="{{profile.image.url}}" name="image" id="exampleFormControlInput4">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Bio</label>
+                        <textarea class="form-control" name="bio" id="exampleFormControlTextarea1"
+                                  rows="3">{{profile.bio}}</textarea>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary" style="margin-top: 10px; border-radius: 10px">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!-- /. PAGE INNER  -->
+</div>
+
+{% endblock %}

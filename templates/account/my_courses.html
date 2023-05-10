@@ -1,0 +1,40 @@
+{% extends 'account/base_dashboard.html' %}
+{% load static %}
+
+{% block content %}
+
+<div id="page-wrapper">
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Admin Dashboard</h2>
+            </div>
+        </div>
+
+        <div class="row">
+    {% if courses %}
+    {% for course in courses %}
+    <div class="col-md-3">
+        <div class="card" style="width: 18rem;">
+            <img src="{{course.course.cover.url}}" style="width: 100%" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">{{course.course.title}}</h5>
+                <p class="card-text">{{course.course.body|safe|slice:"100"}}</p>
+                <a href="{% url 'course:course_detail' course.id%}" class="btn btn-primary">Go course</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <h1>No course yet</h1>
+    {% endif %}
+</div>
+
+    </div>
+    <!-- /. PAGE INNER  -->
+</div>
+
+
+
+
+{% endblock %}
